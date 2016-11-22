@@ -1,0 +1,9 @@
+pytz
+django
+django-crispy-forms
+coverage
+Pillow
+behave-django
+selenium
+faker
+factory_boy
