@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'behave_django',
+    'crispy_forms',
     'selenium',
     'factory',
     'quizes'
@@ -51,14 +52,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'quizes.middleware.timezone.TimezoneMiddleware',
 ]
+
+PROJECT_ROOT = '//Users/v540401/Documents/Projects/wizkids'
 
 ROOT_URLCONF = 'wizkids.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [PROJECT_ROOT+"quizes/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT=PROJECT_ROOT+'/quizes/static'
 
 #Testing
 CHROME_PATH = '/Users/v540401/Library/Google/chrome-library/chromedriver' #chrome driver for Selenium

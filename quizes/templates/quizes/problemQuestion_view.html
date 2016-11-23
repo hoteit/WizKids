@@ -1,0 +1,45 @@
+{% extends "quizes/base.html"%}
+
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Problem Question: {{ problemQuestion.pk }}</h3>
+        </div>
+        <div class="panel-body">
+         <table class="table">
+             <tr>
+                 <td>Category</td><td><strong>{{ problemQuestion.category.category }}</strong></td>
+             </tr>
+             <tr>
+                 <td>Age Group</td><td><strong>{{ problemQuestion.age_group}}</strong></td>
+             </tr>
+             <tr>
+                 <td>Problem Question</td><td><strong>{{ problemQuestion.question }}</strong></td>
+             </tr>
+             <tr>
+                 <td>Choice Answer 1:</td><td><strong>{{ problemQuestion.answerChoice1 }}</strong></td>
+             </tr>
+             <tr>
+                 <td>Choice Answer 2:</td><td><strong>{{ problemQuestion.answerChoice2 }}</strong></td>
+             </tr>
+             <tr>
+                 <td>Choice Answer 3:</td><td><strong>{{ problemQuestion.answerChoice3 }}</strong></td>
+             </tr>
+             <tr>
+                 <td>Choice Answer 4:</td><td><strong>{{ problemQuestion.answerChoice4 }}</strong></td>
+             </tr>
+             <tr>
+                 <td>Correct answer:</td><td><strong>{{ problemQuestion.correctAnswer }}</strong></td>
+             </tr>
+
+         </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block actionmenu %}
+    <a type="button" class="btn btn-default navbar-btn" href="{% url 'problemQuestion_edit' problemQuestion.pk %}">Edit</a>
+    <a type="button" class="btn btn-default navbar-btn" href="{% url 'problemQuestion_new' problemQuestion.pk %}">New</a>
+    <a type="button" class="btn btn-default navbar-btn" href="{% url 'problemQuestion_delete' problemQuestion.pk %}">Delete</a>
+{% endblock %}

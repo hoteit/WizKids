@@ -1,5 +1,26 @@
 from django.db import models
 from django.utils.timezone import now
+from django.contrib.auth.models import User
+
+class Themes(models.Model):
+    #relies on Bootstrap Bootswatch themes that are located in /tallysheets/static/scripts/bower_components/bootswatch
+    #and will be called using UserPreferences table as
+    #  <link rel="stylesheet" href="{% static "scripts/bower_components/bootswatch/simplex/bootstrap.min.css" %}">
+    theme_name = models.CharField('Theme name', max_length=20)
+
+    def __str__(self):
+        return self.theme_name
+
+class UserPreferences(models.Model):
+    #table to store user preferences
+    user = models.ForeignKey(User)
+    theme = models.ForeignKey(Themes, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+def is_superuser(user):
+    return True
 
 
 class QuizCategory (models.Model):

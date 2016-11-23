@@ -4,6 +4,21 @@ from crispy_forms.layout import Layout, Button, Submit, Field
 from crispy_forms.bootstrap import FormActions
 from .models import ProblemQuestion, QuizAgeGroup, QuizCategory, QuizInstance
 
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=20, required=True)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(), required=True)
+
+    helper = FormHelper()
+    helper.form_class = 'form-signin'
+    helper.layout = Layout(
+        Field('username', css_class='form-control'),
+        Field('password', css_class='form-control'),
+        FormActions(
+            Submit('login', 'Login', css_class='btn btn-lg btn-primary btn-block')
+        )
+
+    )
+
 
 class QuizCategoryForm(forms.ModelForm):
     category = forms.CharField(label='Category name', max_length=20, required=True)

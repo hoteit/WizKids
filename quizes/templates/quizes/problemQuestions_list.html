@@ -1,0 +1,27 @@
+{% extends "quizes/base.html" %}
+
+
+{% block content %}
+	  {% if problems %}
+			<table class="table table-striped table-bordered">
+			 	<thead>
+			 	<tr>
+			 		<th>Problems</th>
+			 	</tr>
+			 	</thead>
+				<tbody>
+			 	{% for problem in problems %}
+				<tr>
+			       <td><a href="{% url 'problemQuestion_view' problem.pk %}"><b>{{ problem.question }}</b></a></td>
+			     </tr>
+			   {% endfor %}
+			   </tbody>
+		   </table>
+		 {% else %}
+	  <p>No problems are available. Click <a href="{% url 'problemQuestion_new' %}">here</a> to add a new problem question.
+      {% endif %}
+{% endblock %}
+
+{% block actionmenu %}
+    <a type="button" class="btn btn-default" href="{% url 'problemQuestion_new' %}">New Problem Question</a>
+{% endblock %}

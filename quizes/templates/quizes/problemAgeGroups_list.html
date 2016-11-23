@@ -1,0 +1,27 @@
+{% extends "quizes/base.html" %}
+
+
+{% block content %}
+	  {% if customer_list %}
+			<table class="table table-striped table-bordered">
+			 	<thead>
+			 	<tr>
+			 		<th>Age Groups</th>
+			 	</tr>
+			 	</thead>
+				<tbody>
+			 	{% for agegroup in agegroups %}
+				<tr>
+			       <td><a href="{% url 'problemAgeGroup_view' agegroup.pk %}"><b>{{ agegroup }}</b></a></td>
+			     </tr>
+			   {% endfor %}
+			   </tbody>
+		   </table>
+		 {% else %}
+	  <p>No age groups are available. Click <a href="{% url 'ageGroup_new' %}">here</a> to add a new age group.
+      {% endif %}
+{% endblock %}
+
+{% block actionmenu %}
+    <a type="button" class="btn btn-default" href="{% url 'ageGroup_new' %}">New Age Group</a>
+{% endblock %}
