@@ -15,13 +15,14 @@ def random_string(length=10):
 class QuizCategoryFactory(factory.DjangoModelFactory):
     class Meta:
         model = 'quizes.QuizCategory'
-        django_get_or_create = ('category_name')
+        django_get_or_create = ('category',)
 
-    category_name = 'math'
+    category = u'math'
 
 class ProblemQuestionFactory(factory.Factory):
     class Meta:
         model = ProblemQuestion
+
 
 class UserFactory(factory.DjangoModelFactory):
     class Meta:
@@ -36,14 +37,8 @@ class UserFactory(factory.DjangoModelFactory):
 class QuizesTestCase(TestCase):
 
     def setUp(self):
-       #user = User.objects.create_user(username='tarek', email='tarek@nkey.io', password='tarek' )
        user = UserFactory()
-       #User.objects.create_user(username='tarek', email='tarek@nkey.io', password='tarek' )
-       categories = QuizCategory.objects.bulk_create([
-           QuizCategory(category='math'),
-           QuizCategory(category='science'),
-           QuizCategory(category='language')
-       ])
+       category = QuizCategoryFactory()
        quizAgeGroups = QuizAgeGroup.objects.bulk_create([
            QuizAgeGroup(minAgeLevel=10, maxAgeLevel=12),
            QuizAgeGroup(minAgeLevel=13, maxAgeLevel=14)
@@ -65,7 +60,7 @@ class QuizesTestCase(TestCase):
         except ObjectDoesNotExist:
             raise Exception('category %s not found. ' % category)
         except:
-            raise Exception ("some error has occured when looking up for cateogry %s" % category)
+            raise Exception ("some error has occured when looking up for category %s" % category)
 
     def get_agegroup(self, min_age):
         try:
