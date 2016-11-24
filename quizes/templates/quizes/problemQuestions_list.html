@@ -2,7 +2,7 @@
 
 
 {% block content %}
-	  {% if problems %}
+	  {% if questions %}
 			<table class="table table-striped table-bordered">
 			 	<thead>
 			 	<tr>
@@ -10,7 +10,7 @@
 			 	</tr>
 			 	</thead>
 				<tbody>
-			 	{% for problem in problems %}
+			 	{% for problem in questions %}
 				<tr>
 			       <td><a href="{% url 'problemQuestion_view' problem.pk %}"><b>{{ problem.question }}</b></a></td>
 			     </tr>
