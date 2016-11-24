@@ -1,0 +1,12 @@
+Task List
+
+#wizkids portal
+
+#completed
+- basic quiz portal to manage problem questions categories, age groups, and questions
+- basic unit testing for the model and one bdd test case to login
+
+#todo make sure deleting categories and age groups give a constrain warning before allowing all records to be delete
+#todo fix and test the illustrations
+#todo make the answer field in problemquestions as a 1 to 4 selection (maybe)
+
