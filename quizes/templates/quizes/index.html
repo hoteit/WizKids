@@ -1,32 +1,30 @@
-{% extends "tallysheets/base.html" %}
+{% extends "quizes/base.html" %}
 {% block content %}
      <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Projects by Customers</h3>
+            <h3 class="panel-title">Problems Count by Categories</h3>
         </div>
         <div class="panel-body">
-       {% if customers %}
+       {% if problemsCntbyCategories %}
            <table class="table table-condensed">
             <thead>
             <tr>
-                <th>Customer</th>
-                <th>Projects</th>
-                <th>Locations</th>
+                <th>Category</th>
+                <th>Problems Cnt</th>
             </tr>
             </thead>
             <tbody>
-            {% for customer in customers %}
+            {% for problemsCntbyCategory in problemsCntbyCategories %}
 
                 <tr>
-                    <td>{{ customer.company_name  }}</td>
-                    <td><a href="{% url 'customerProjectReport' customerid=customer.pk %}">{{ customer.num_projects }}</a></td>
-                    <td>{{ customer.num_locations}}</td>
+                    <td>{{ problemsCntbyCategory.category  }}</td>
+                    <td>{{ problemsCntbyCategory.num_problems }}</td>
                 </tr>
             {% endfor %}
             </tbody> <!-- TODO: add pagination -->
         </table>
         {% else %}
-           <div class="alert alert-info" role="alert">No customers currently listed.</div>
+           <div class="alert alert-info" role="alert">No categories currently listed.</div>
 
         {% endif %}
         </div>
@@ -35,5 +33,5 @@
 
 
 {% block actionmenu %}
-  <a type="button" class="btn btn-default" href="{% url 'project_new' %}">New Project</a>
+  <a type="button" class="btn btn-default" href="{% url 'problemCategory_new' %}">New Category</a>
 {% endblock %}

@@ -5,6 +5,5 @@ Feature: access problem questions website
 
   Scenario: Access problem questions website
    Given a user "tarek" exists
-   When I visit "homepage"
-   Then I should login
-   And  I should get to the problem questions page
+   When I login as "tarek","Lynn2005"
+   Then  I should get to the "problems count by categories page"

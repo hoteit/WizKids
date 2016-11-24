@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class Themes(models.Model):
     #relies on Bootstrap Bootswatch themes that are located in /tallysheets/static/scripts/bower_components/bootswatch
@@ -35,6 +36,8 @@ class QuizCategory (models.Model):
     def __str__(self):
         return '%s' % self.category
 
+    def get_absolute_url(self):
+        return reverse('problemCategory_view', kwargs={'pk': self.pk})
 
 class QuizAgeGroup (models.Model):
     """

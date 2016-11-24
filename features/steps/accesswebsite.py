@@ -1,6 +1,7 @@
 from behave import *
 from django.contrib.auth.models import User
 
+
 #use_step_matcher("re")
 use_step_matcher("parse")
 
@@ -14,35 +15,29 @@ def createuser(context, username):
     pass
 
 
-@when('I visit "homepage"')
-def step_impl(context):
+@when('I login as "{user} {password}"')
+def step_impl(context, user, password):
     """
     :type context: behave.runner.Context
     """
-    pass
+    br = context.browser
+    br.get(context.get_url('login'))
+
+    # Checks for Cross-Site Request Forgery protection input
+    assert br.find_element_by_name('csrfmiddlewaretoken').is_enabled()
+
+    br.find_element_by_name('username').send_keys(user)
+    br.find_element_by_name('password').send_keys(password)
+    br.find_element_by_name('login').click()
 
 
-@then("I should login")
-def step_impl(context):
+@then('I should get to the "{page}"')
+def step_impl(context, page):
     """
     :type context: behave.runner.Context
     """
-    pass
+    br = context.browser
+    assert br.current_url.endswith('/index/')
 
-
-@then("get to the problem questions page")
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    pass
-
-
-@then("I should get to the problem questions page")
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    pass
 
 

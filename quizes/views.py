@@ -82,8 +82,8 @@ def login_user(request):
 @requires_login
 def problemsCntReport(request):
     #show the list of customer and number of projects
-    problems = ProblemQuestion.objects.annotate(num_problems=Count('problemQuestion'))
-    context = {'problems': problems}
+    problemsCntbyCategories = QuizCategory.objects.annotate(num_problems=Count('problemquestion'))
+    context = {'problemsCntbyCategories': problemsCntbyCategories}
     return render(request, 'quizes/index.html', context)
 
 
@@ -105,7 +105,7 @@ class ProblemCategoryView(generic.DetailView):
 
 
 class ProblemCategoriesList(generic.ListView):
-    context_object_name = 'catgories'
+    context_object_name = 'categories'
     model = QuizCategory
     template_name = 'quizes/problemCategories_list.html'
 
@@ -113,7 +113,7 @@ class ProblemCategoriesList(generic.ListView):
 class ProblemCategoryDelete(generic.DeleteView):
     model = QuizCategory
     template_name = 'quizes/problemCategory_confirm_delete.html'
-    success_url = reverse_lazy('categories_list')
+    success_url = reverse_lazy('problemCategories_list')
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):

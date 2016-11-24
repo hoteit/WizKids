@@ -14,7 +14,7 @@ def random_string(length=10):
 
 class QuizCategoryFactory(factory.DjangoModelFactory):
     class Meta:
-        model = 'Quizes.QuizCategory'
+        model = 'quizes.QuizCategory'
         django_get_or_create = ('category_name')
 
     category_name = 'math'
