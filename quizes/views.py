@@ -150,8 +150,7 @@ class ProblemAgeGroupsList(generic.ListView):
 class ProblemAgeGroupDelete(generic.DeleteView):
     model = QuizAgeGroup
     template_name = 'quizes/problemAgeGroup_confirm_delete.html'
-    success_url = reverse_lazy('agegroups_list')
-
+    success_url = reverse_lazy('problemAgeGroups_list')
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):
@@ -188,7 +187,7 @@ class ProblemQuestionsList(generic.ListView):
 class ProblemQuestionDelete(generic.DeleteView):
     model = ProblemQuestion
     template_name = 'quizes/problemQuestion_confirm_delete.html'
-    success_url = reverse_lazy('questions_list')
+    success_url = reverse_lazy('problemQuestions_list')
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):

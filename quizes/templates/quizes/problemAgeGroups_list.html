@@ -2,7 +2,7 @@
 
 
 {% block content %}
-	  {% if customer_list %}
+	  {% if agegroups %}
 			<table class="table table-striped table-bordered">
 			 	<thead>
 			 	<tr>
@@ -18,10 +18,10 @@
 			   </tbody>
 		   </table>
 		 {% else %}
-	  <p>No age groups are available. Click <a href="{% url 'ageGroup_new' %}">here</a> to add a new age group.
+	  <p>No age groups are available. Click <a href="{% url 'problemAgeGroup_new' %}">here</a> to add a new age group.
       {% endif %}
 {% endblock %}
 
 {% block actionmenu %}
-    <a type="button" class="btn btn-default" href="{% url 'ageGroup_new' %}">New Age Group</a>
+    <a type="button" class="btn btn-default" href="{% url 'problemAgeGroup_new' %}">New Age Group</a>
 {% endblock %}

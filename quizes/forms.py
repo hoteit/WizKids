@@ -69,6 +69,7 @@ class ProblemQuestionForm(forms.ModelForm):
     helper.layout = Layout(
         Field('category', css_class='form-control'),
         Field('ageGroup', css_class='form-control'),
+        Field('question', css_class='form-control'),
         Field('answerChoice1', css_class='form-control'),
         Field('answerChoice2', css_class='form-control'),
         Field('answerChoice3', css_class='form-control'),

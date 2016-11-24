@@ -52,6 +52,8 @@ class QuizAgeGroup (models.Model):
     class Meta:
         verbose_name_plural = "Problem Questions Age Groups"
 
+    def get_absolute_url(self):
+        return reverse('problemAgeGroup_view', kwargs={'pk': self.pk})
 
 class ProblemQuestion (models.Model):
     """
@@ -72,6 +74,9 @@ class ProblemQuestion (models.Model):
 
     def __str__(self):
         return '%s - problem question# %i' % (self.category, self.pk)
+
+    def get_absolute_url(self):
+        return reverse('problemQuestion_view', kwargs={'pk': self.pk})
 
 
 class QuizInstance (models.Model):

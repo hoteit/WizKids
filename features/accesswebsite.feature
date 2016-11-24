@@ -7,3 +7,4 @@ Feature: access problem questions website
    Given a user "user"/"pass" exists
     When I login as "user"/"pass"
     Then  I should get to the "index"
+
